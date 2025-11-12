@@ -1,16 +1,119 @@
-:root{--bg:#050712;--card:#0b1330;--accent:#ff6b6b;--muted:#9aa7c7}
-body{margin:0;font-family:Inter,system-ui,sans-serif;background:linear-gradient(180deg,#020214,#061031);color:#e6eefb}
-.center{max-width:900px;margin:30px auto;padding:20px}
-.card{background:rgba(255,255,255,0.03);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.04)}
-.status{padding:10px;border-radius:8px;text-align:center;font-weight:600;margin-bottom:12px;}
-.status.waiting{background:#330000;color:#ff6b6b;}
-.status.connected{background:#003300;color:#4effa1;}
-.video-wrap{background:#000;border-radius:10px;height:60vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
-video{width:100%;height:100%;object-fit:contain}
-.controls{display:flex;gap:10px;margin:12px 0;flex-wrap:wrap;}
-button{background:linear-gradient(90deg,var(--accent),#ff9f43);border:none;padding:8px 12px;border-radius:8px;cursor:pointer;color:#041021;font-weight:700}
-.hidden{display:none}
-.chat{margin-top:12px}
-.messages{height:180px;overflow:auto;background:rgba(0,0,0,0.2);padding:8px;border-radius:8px}
-.composer{display:flex;gap:8px;margin-top:8px}
-input{padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit}
+:root {
+  --bg: #050712;
+  --card: #0b1330;
+  --accent: #ff6b6b;
+  --muted: #9aa7c7;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: linear-gradient(180deg, #020214, #061031);
+  color: #e6eefb;
+}
+
+.center {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.status {
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.status.waiting {
+  background: #330000;
+  color: #ff6b6b;
+}
+
+.status.connected {
+  background: #003300;
+  color: #4effa1;
+}
+
+/* --- Upgraded Movie Mode Styles --- */
+.video-wrap {
+  background: #000;
+  border-radius: 10px;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  background: #000;
+}
+
+/* Fullscreen style */
+.fullscreen-active video {
+  width: 100vw;
+  height: 100vh;
+  border-radius: 0;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin: 12px 0;
+  flex-wrap: wrap;
+}
+
+button {
+  background: linear-gradient(90deg, var(--accent), #ff9f43);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #041021;
+  font-weight: 700;
+}
+
+.hidden {
+  display: none;
+}
+
+.chat {
+  margin-top: 12px;
+}
+
+.messages {
+  height: 180px;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.composer {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+input {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: transparent;
+  color: inherit;
+}

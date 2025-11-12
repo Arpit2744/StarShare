@@ -19,7 +19,8 @@ function appendMsg(name, text) {
 }
 
 function connectWS(rid) {
-  const protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+  const protocol = location.hostname.includes('render.com') ? 'wss' :
+                 (location.protocol === 'https:' ? 'wss' : 'ws');
   ws = new WebSocket(`${protocol}://${location.host}/ws/${encodeURIComponent(rid)}`);
 
   ws.onopen = () => {
@@ -98,6 +99,26 @@ leaveBtn.addEventListener('click', () => {
   if (localStream) { localStream.getTracks().forEach(t => t.stop()); localStream = null; }
   roomUi.classList.add('hidden'); joinCard.classList.remove('hidden');
   setStatus(false, '🔴 Left room');
+});
+// ===== Fullscreen Button Logic =====
+const fullscreenBtn = $('#fullscreen');
+
+fullscreenBtn.addEventListener('click', () => {
+  const videoContainer = document.querySelector('.video-wrap');
+  if (!document.fullscreenElement) {
+    videoContainer.requestFullscreen().catch(err => {
+      console.error('Fullscreen failed:', err);
+    });
+    fullscreenBtn.textContent = '🗗 Exit Fullscreen';
+  } else {
+    document.exitFullscreen();
+    fullscreenBtn.textContent = '🔲 Fullscreen';
+  }
+});
+
+document.addEventListener('fullscreenchange', () => {
+  const isFs = !!document.fullscreenElement;
+  document.querySelector('.video-wrap').classList.toggle('fullscreen-active', isFs);
 });
 
 window.addEventListener('beforeunload', () => { ws?.close(); pc?.close(); localStream?.getTracks().forEach(t => t.stop()); });
