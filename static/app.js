@@ -50,10 +50,32 @@ function connectWS(rid) {
 }
 
 async function preparePeer() {
-  pc = new RTCPeerConnection({ iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] });
-  pc.ontrack = (ev) => { remoteVideo.srcObject = ev.streams[0]; };
-  pc.onicecandidate = (ev) => { if (ev.candidate) ws.send(JSON.stringify({ type: 'ice', payload: ev.candidate })); };
+  pc = new RTCPeerConnection({
+    iceServers: [
+      { urls: 'stun:stun.l.google.com:19302' },
+      {
+        urls: 'turn:openrelay.metered.ca:80',
+        username: 'openrelayproject',
+        credential: 'openrelayproject'
+      },
+      {
+        urls: 'turn:openrelay.metered.ca:443',
+        username: 'openrelayproject',
+        credential: 'openrelayproject'
+      }
+    ]
+  });
+
+  pc.ontrack = (ev) => {
+    remoteVideo.srcObject = ev.streams[0];
+  };
+
+  pc.onicecandidate = (ev) => {
+    if (ev.candidate)
+      ws.send(JSON.stringify({ type: 'ice', payload: ev.candidate }));
+  };
 }
+
 
 joinBtn.addEventListener('click', async () => {
   roomId = roomInput.value.trim();
