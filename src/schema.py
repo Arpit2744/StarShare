@@ -1,0 +1,19 @@
+FEATURE_SCHEMA = {
+    "target": "math_score",
+
+    "numerical": [
+        "writing_score",
+        "reading_score",
+    ],
+
+    "categorical": [
+        "gender",
+        "race_ethnicity",
+        "parental_level_of_education",
+        "lunch",
+        "test_preparation_course",
+    ],
+
+    # Optional
+    "identifier": []
+}

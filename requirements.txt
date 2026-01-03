@@ -1,2 +1,11 @@
-fastapi
-uvicorn[standard]
+# Core
+numpy
+pandas
+scikit-learn==1.5.2
+
+# Models
+xgboost
+catboost
+
+# Utilities
+joblib
