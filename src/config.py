@@ -1,13 +1,19 @@
-from pathlib import Path 
+from pathlib import Path
+import yaml
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
+SEED = 42
 
-DATA_DIR = PROJECT_ROOT/"data"
-RAW_DATA = DATA_DIR/"raw"
-PROCESSED_DATA = DATA_DIR/"processed"
+DATA_DIR = Path("data")
+RAW_DATA_PATH = DATA_DIR / "raw" / "data.csv"
+SCHEMA_PATH = DATA_DIR / "schema.yaml"   
 
-ARTIFACTS_DIR = PROJECT_ROOT/"artifacts"
-MODEL_PATH = ARTIFACTS_DIR/"model.pkl"
+PROCESSED_DIR = DATA_DIR / "processed"
+MODEL_DIR = Path("models")
 
-RANDOM_STATE = 42
-TEST_SIZE = 0.2
+TRAIN_RATIO = 0.8
+MIN_ACCEPTABLE_SCORE = 0.6
+
+
+def load_schema():
+    with open(SCHEMA_PATH, "r") as f:
+        return yaml.safe_load(f)

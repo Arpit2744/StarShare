@@ -1,0 +1,23 @@
+[project]
+name = "student-performance-indicator"
+version = "0.1.0"
+description = "Reproducible ML training system for student performance prediction"
+requires-python = ">=3.9"
+
+dependencies = [
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "xgboost",
+    "catboost",
+    "PyYAML",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

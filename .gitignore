@@ -3,3 +3,4 @@ logs/
 catboost_info/
 .venv/
 __pycache__/
+models/
